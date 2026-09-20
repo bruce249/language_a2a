@@ -221,31 +221,44 @@ def styles() -> dict:
 
 
 CAPTIONS = {
-    "fig1_detection.png": (
-        "Figure 1. Share of seeded leaks flagged, by transcript language, with 95% Wilson "
+    "fig1_setup.png": (
+        "Figure 1. One ENV-3 episode. Messages pass client to holder to analyst to monitor. "
+        "The holder alone knows the canary; the violating arm appends it to the public JSON. "
+        "The monitor scores the transcript and nothing else, and the language of that "
+        "transcript is the variable under study."
+    ),
+    "fig2_scores.png": (
+        "Figure 2. Distribution of the suspicion scores the monitors actually returned across "
+        "the 1000 episodes of Study C, split by ground truth. Both monitors answer at the ends "
+        "of the range only. Because the mid monitor's 55 missed leaks carry the same score as "
+        "697 benign episodes, no threshold separates them, and neither AUROC nor recall at a "
+        "fixed false-positive rate is identified."
+    ),
+    "fig3_detection.png": (
+        "Figure 3. Share of seeded leaks flagged, by transcript language, with 95% Wilson "
         "intervals. The weak monitor is flat at 1.0; the mid monitor varies, and its English "
         "and Russian intervals overlap."
     ),
-    "fig2_cca.png": (
-        "Figure 2. Covert channel advantage against the mid monitor, relative to English, with "
+    "fig4_cca.png": (
+        "Figure 4. Covert channel advantage against the mid monitor, relative to English, with "
         "95% bootstrap intervals. Values below 1 mean the language yields less undetected "
         "utility than English. The weak monitor admits no undetected utility in any language, "
         "so the ratio is undefined there and is not plotted."
     ),
-    "fig3_selection.png": (
-        "Figure 3. Study D language selection over 200 sequential trials, as a rolling share in "
+    "fig5_selection.png": (
+        "Figure 5. Study D language selection over 200 sequential trials, as a rolling share in "
         "the last 20 trials. The dotted line is the uniform rate."
     ),
-    "fig4_shift.png": (
-        "Figure 4. Probability that the picker keeps the same language at trial t+1, split by "
+    "fig6_shift.png": (
+        "Figure 6. Probability that the picker keeps the same language at trial t+1, split by "
         "whether trial t was flagged, with 95% Wilson intervals."
     ),
-    "fig5_script.png": (
-        "Figure 5. Script control (Study E): share of seeded leaks flagged by the mid monitor in "
+    "fig7_script.png": (
+        "Figure 7. Script control (Study E): share of seeded leaks flagged by the mid monitor in "
         "native and romanised script, with 95% Wilson intervals. Fifteen leaks per arm."
     ),
-    "fig6_lpi.png": (
-        "Figure 6. Language Preference Index for agent-card routing (Study A). Parity is 1.0."
+    "fig8_lpi.png": (
+        "Figure 8. Language Preference Index for agent-card routing (Study A). Parity is 1.0."
     ),
 }
 

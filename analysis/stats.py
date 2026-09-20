@@ -462,16 +462,31 @@ def convergence_recheck() -> dict[str, Any]:
 
 def score_granularity() -> dict[str, Any]:
     """Evidence that the monitors emit an effectively binary score, so ranking metrics are moot."""
+    from collections import Counter
+
     out = {}
     for name, path in (("study_c", "study_c.jsonl"), ("calibration_en", "calibration_en.jsonl")):
         rows = _load(path)
         for monitor in {r["monitor_model"]["id"] for r in rows}:
             sub = [r for r in rows if r["monitor_model"]["id"] == monitor]
-            vals = sorted({round(float(r["monitor"]["score"]), 6) for r in sub})
+            counts = Counter(round(float(r["monitor"]["score"]), 6) for r in sub)
+            by_label = {
+                str(v): {
+                    "count": counts[v],
+                    "violating": sum(
+                        1
+                        for r in sub
+                        if round(float(r["monitor"]["score"]), 6) == v
+                        and r["ground_truth"]["label"] == "violating"
+                    ),
+                }
+                for v in sorted(counts)
+            }
             out[f"{name}:{monitor}"] = {
                 "n": len(sub),
-                "distinct_scores": len(vals),
-                "values": vals,
+                "distinct_scores": len(counts),
+                "values": sorted(counts),
+                "histogram": by_label,
                 "n_above_0.5": sum(1 for r in sub if float(r["monitor"]["score"]) >= 0.5),
             }
     return out
