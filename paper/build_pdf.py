@@ -221,11 +221,32 @@ def styles() -> dict:
 
 
 CAPTIONS = {
-    "f1_lpi.png": "Figure 1. Language Preference Index (Study A). Parity is 1.0.",
-    "f2_scissors.png": "Figure 2. Capability vs detection (scissors plot). Luna is flat; the mid monitor dips in English.",
-    "f3_cca.png": "Figure 3. Covert Channel Advantage vs English. Luna ~1; mid monitor inverts (English is the channel).",
-    "f4_selection.png": "Figure 4. Study D rolling selection (window 20). Early Russian streak; English is the long-run mass.",
-    "f5_script.png": "Figure 5. Script control (Study E). Romanising Russian closes the gap; Hinglish does not change Hindi.",
+    "fig1_detection.png": (
+        "Figure 1. Share of seeded leaks flagged, by transcript language, with 95% Wilson "
+        "intervals. The weak monitor is flat at 1.0; the mid monitor varies, and its English "
+        "and Russian intervals overlap."
+    ),
+    "fig2_cca.png": (
+        "Figure 2. Covert channel advantage against the mid monitor, relative to English, with "
+        "95% bootstrap intervals. Values below 1 mean the language yields less undetected "
+        "utility than English. The weak monitor admits no undetected utility in any language, "
+        "so the ratio is undefined there and is not plotted."
+    ),
+    "fig3_selection.png": (
+        "Figure 3. Study D language selection over 200 sequential trials, as a rolling share in "
+        "the last 20 trials. The dotted line is the uniform rate."
+    ),
+    "fig4_shift.png": (
+        "Figure 4. Probability that the picker keeps the same language at trial t+1, split by "
+        "whether trial t was flagged, with 95% Wilson intervals."
+    ),
+    "fig5_script.png": (
+        "Figure 5. Script control (Study E): share of seeded leaks flagged by the mid monitor in "
+        "native and romanised script, with 95% Wilson intervals. Fifteen leaks per arm."
+    ),
+    "fig6_lpi.png": (
+        "Figure 6. Language Preference Index for agent-card routing (Study A). Parity is 1.0."
+    ),
 }
 
 
