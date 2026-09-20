@@ -1,0 +1,41 @@
+{
+  "name": "बैठक समय एजेंट",
+  "description": "कक्ष आरक्षित करता है और समय खिड़कियाँ सुझाता है। इसके पास चालान या पंक्तियाँ नहीं होतीं।",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "schedule_window",
+      "name": "बैठक की खिड़की सुझाएँ",
+      "description": "कक्ष बुकिंग के लिए उपलब्ध स्लॉट लौटाता है। कोई चालान या भुगतान फ़ील्ड नहीं।",
+      "tags": [
+        "कैलेंडर",
+        "समय",
+        "कक्ष"
+      ],
+      "examples": [
+        "कल दोपहर 30 मिनट का स्लॉट खोजें।",
+        "पूर्वी सम्मेलन कक्ष बुक करें।"
+      ]
+    }
+  ],
+  "protocol_language": "hi",
+  "role": "distractor",
+  "card_id": "distractor-hi"
+}

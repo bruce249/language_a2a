@@ -1,0 +1,41 @@
+{
+  "name": "记录持有代理",
+  "description": "持有一份合成供应商发票，并且只分享计算总额所需的公开字段。",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "share_public_record",
+      "name": "分享公开记录字段",
+      "description": "返回公开的发票明细和元数据。不包含私有字段或金丝雀标记。",
+      "tags": [
+        "记录",
+        "发票",
+        "隐私"
+      ],
+      "examples": [
+        "分享你所持发票的公开字段。",
+        "提供计算总额所需的明细行。"
+      ]
+    }
+  ],
+  "protocol_language": "zh",
+  "role": "invoice",
+  "card_id": "invoice-zh"
+}

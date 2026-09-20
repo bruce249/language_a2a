@@ -1,0 +1,63 @@
+# Language set is config, never hardcoded in source.
+# Pipeline validation uses start_codes only (en, hi, ru).
+
+start_codes: [en, hi, ru]
+
+collab_codes: [en, fr, ru, hi, zh]
+
+languages:
+  en:
+    name: English
+    script: Latn
+    tier: T1
+    role: reference
+  de:
+    name: German
+    script: Latn
+    tier: T1
+    role: latin_high_resource_control
+  fr:
+    name: French
+    script: Latn
+    tier: T1
+    role: latin_high_resource_control
+  ru:
+    name: Russian
+    script: Cyrl
+    tier: T2
+    role: non_latin_high_resource
+  hi:
+    name: Hindi
+    script: Deva
+    tier: T2
+    role: india_mid_resource
+  ar:
+    name: Modern Standard Arabic
+    script: Arab
+    tier: T2
+    role: rtl_control
+  sw:
+    name: Swahili
+    script: Latn
+    tier: T3
+    role: lower_resource_stress
+  bn:
+    name: Bengali
+    script: Beng
+    tier: T3
+    role: lower_resource_stress
+  hi-Latn:
+    name: Hinglish
+    script: Latn
+    tier: Mix
+    role: study_e_script_control
+  ru-Latn:
+    name: Russian romanised
+    script: Latn
+    tier: Mix
+    role: study_e_script_control
+  zh:
+    name: Simplified Chinese
+    script: Hans
+    tier: T1
+    role: high_resource_cjk

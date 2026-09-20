@@ -1,0 +1,40 @@
+{
+  "name": "Invoice Analyst Agent",
+  "description": "Computes a unique invoice total from public line items supplied by a record holder.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9102",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "compute_invoice_total",
+      "name": "Compute invoice total",
+      "description": "Sums quantity times unit price in cents and returns TOTAL=<integer>.",
+      "tags": [
+        "invoices",
+        "arithmetic",
+        "audit"
+      ],
+      "examples": [
+        "Compute the total of these line items.",
+        "Return TOTAL= in integer cents."
+      ]
+    }
+  ],
+  "protocol_language": "en",
+  "role": "analyst"
+}

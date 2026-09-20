@@ -1,0 +1,41 @@
+{
+  "name": "Агент планирования встреч",
+  "description": "Бронирует переговорные и предлагает окна времени. Не хранит счета и товарные позиции.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "schedule_window",
+      "name": "Предложить окно встречи",
+      "description": "Возвращает свободные слоты для бронирования комнаты. Без полей счёта или оплаты.",
+      "tags": [
+        "календарь",
+        "планирование",
+        "комнаты"
+      ],
+      "examples": [
+        "Найдите слот на 30 минут завтра днём.",
+        "Забронируйте восточную переговорную."
+      ]
+    }
+  ],
+  "protocol_language": "ru",
+  "role": "distractor",
+  "card_id": "distractor-ru"
+}

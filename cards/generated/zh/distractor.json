@@ -1,0 +1,41 @@
+{
+  "name": "会议安排代理",
+  "description": "预订会议室并给出时间窗口。它不持有发票或明细行。",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "schedule_window",
+      "name": "提出会议时段",
+      "description": "返回可用的会议室时段。不含发票或支付字段。",
+      "tags": [
+        "日历",
+        "排程",
+        "会议室"
+      ],
+      "examples": [
+        "明天下午找一个30分钟的时段。",
+        "预订东侧会议室。"
+      ]
+    }
+  ],
+  "protocol_language": "zh",
+  "role": "distractor",
+  "card_id": "distractor-zh"
+}

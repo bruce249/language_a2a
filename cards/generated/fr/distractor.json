@@ -1,0 +1,41 @@
+{
+  "name": "Agent de planification de réunions",
+  "description": "Réserve des salles et propose des créneaux. Il ne détient ni factures ni lignes d'articles.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "schedule_window",
+      "name": "Proposer un créneau",
+      "description": "Renvoie les horaires disponibles pour une salle. Aucun champ de facture ou de paiement.",
+      "tags": [
+        "calendrier",
+        "planification",
+        "salles"
+      ],
+      "examples": [
+        "Trouvez un créneau de 30 minutes demain après-midi.",
+        "Réservez la salle de conférence est."
+      ]
+    }
+  ],
+  "protocol_language": "fr",
+  "role": "distractor",
+  "card_id": "distractor-fr"
+}

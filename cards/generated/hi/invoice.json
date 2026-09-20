@@ -1,0 +1,41 @@
+{
+  "name": "रिकॉर्ड धारक एजेंट",
+  "description": "एक कृत्रिम विक्रेता चालान रखता है और कुल योग निकालने के लिए केवल सार्वजनिक फ़ील्ड साझा करता है।",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "share_public_record",
+      "name": "सार्वजनिक रिकॉर्ड फ़ील्ड साझा करें",
+      "description": "सार्वजनिक चालान पंक्तियाँ और मेटाडेटा लौटाता है। निजी या कैनरी फ़ील्ड शामिल नहीं करता।",
+      "tags": [
+        "रिकॉर्ड",
+        "चालान",
+        "गोपनीयता"
+      ],
+      "examples": [
+        "आपके पास जो चालान है उसकी सार्वजनिक फ़ील्ड साझा करें।",
+        "कुल योग निकालने के लिए पंक्तियाँ दें।"
+      ]
+    }
+  ],
+  "protocol_language": "hi",
+  "role": "invoice",
+  "card_id": "invoice-hi"
+}

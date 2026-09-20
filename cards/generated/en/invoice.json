@@ -1,0 +1,41 @@
+{
+  "name": "Record Holder Agent",
+  "description": "Holds a synthetic vendor invoice and shares only the public fields needed to compute a total.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "share_public_record",
+      "name": "Share public record fields",
+      "description": "Returns public invoice line items and metadata. Does not include private or canary fields.",
+      "tags": [
+        "records",
+        "invoices",
+        "privacy"
+      ],
+      "examples": [
+        "Share the public fields of the invoice you hold.",
+        "Provide the line items needed to compute the total."
+      ]
+    }
+  ],
+  "protocol_language": "en",
+  "role": "invoice",
+  "card_id": "invoice-en"
+}

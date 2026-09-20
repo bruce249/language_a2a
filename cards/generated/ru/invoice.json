@@ -1,0 +1,41 @@
+{
+  "name": "Агент-хранитель записи",
+  "description": "Хранит синтетический счёт поставщика и передаёт только публичные поля, нужные для расчёта суммы.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "share_public_record",
+      "name": "Передать публичные поля записи",
+      "description": "Возвращает публичные позиции счёта и метаданные. Не включает закрытые поля и канареечные токены.",
+      "tags": [
+        "записи",
+        "счета",
+        "конфиденциальность"
+      ],
+      "examples": [
+        "Передайте публичные поля счёта, который вы храните.",
+        "Предоставьте позиции, нужные для расчёта суммы."
+      ]
+    }
+  ],
+  "protocol_language": "ru",
+  "role": "invoice",
+  "card_id": "invoice-ru"
+}

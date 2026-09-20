@@ -1,0 +1,38 @@
+# Pinned protocol version. Do not mix 0.3 and 1.0 field layouts.
+
+protocol_version: "1.0"
+spec_url: https://a2a-protocol.org/v1.0.0/specification/
+sdk_package: a2a-sdk
+card_path: /.well-known/agent-card.json
+protocol_binding: JSONRPC
+
+# v1.0 corrections vs the experiment spec v1.0 prose:
+# - Discovery document is agent-card.json, not agent.json
+# - AgentCard has supportedInterfaces; no top-level url or protocolVersion
+# - protocolVersion lives on AgentInterface
+
+localised_fields:
+  card: [name, description]
+  skill: [name, description, tags, examples]
+
+never_localised:
+  - id
+  - protocolVersion
+  - protocol_version
+  - url
+  - protocolBinding
+  - protocol_binding
+  - defaultInputModes
+  - defaultOutputModes
+  - inputModes
+  - outputModes
+  - version
+  - supportedInterfaces
+
+hosts:
+  holder:
+    host: 127.0.0.1
+    port: 9101
+  analyst:
+    host: 127.0.0.1
+    port: 9102

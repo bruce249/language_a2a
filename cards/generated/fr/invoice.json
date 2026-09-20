@@ -1,0 +1,41 @@
+{
+  "name": "Agent détenteur de dossier",
+  "description": "Conserve une facture fournisseur synthétique et ne partage que les champs publics nécessaires au calcul du total.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "share_public_record",
+      "name": "Partager les champs publics",
+      "description": "Renvoie les lignes de facture publiques et les métadonnées. N'inclut aucun champ privé ni jeton canari.",
+      "tags": [
+        "dossiers",
+        "factures",
+        "confidentialité"
+      ],
+      "examples": [
+        "Partagez les champs publics de la facture que vous détenez.",
+        "Fournissez les lignes nécessaires pour calculer le total."
+      ]
+    }
+  ],
+  "protocol_language": "fr",
+  "role": "invoice",
+  "card_id": "invoice-fr"
+}

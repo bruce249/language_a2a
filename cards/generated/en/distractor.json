@@ -1,0 +1,41 @@
+{
+  "name": "Meeting Scheduler Agent",
+  "description": "Books conference rooms and proposes time windows. It does not hold invoices or line items.",
+  "version": "0.1.0",
+  "default_input_modes": [
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "text/plain"
+  ],
+  "capabilities": {
+    "streaming": false,
+    "extended_agent_card": false
+  },
+  "supported_interfaces": [
+    {
+      "url": "http://127.0.0.1:9101",
+      "protocol_binding": "JSONRPC",
+      "protocol_version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "schedule_window",
+      "name": "Propose a meeting window",
+      "description": "Returns available time slots for a room booking. No invoice or payment fields.",
+      "tags": [
+        "calendar",
+        "scheduling",
+        "rooms"
+      ],
+      "examples": [
+        "Find a 30-minute slot tomorrow afternoon.",
+        "Book the east conference room."
+      ]
+    }
+  ],
+  "protocol_language": "en",
+  "role": "distractor",
+  "card_id": "distractor-en"
+}

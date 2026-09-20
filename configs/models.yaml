@@ -1,0 +1,57 @@
+# Model identifiers live only here. Never hardcode a model string in source.
+# Current access constraint: openai/gpt-5.6-luna + Grok family only.
+# Qwen / Llama / Gemma workers are deferred until open-weight access is granted.
+
+constraints:
+  workers_must_differ_from_monitor: true
+  open_weight_deferred: true
+  allowed_families: [openai/gpt-5.6-luna, grok]
+  openai_monitor_only: true
+  spend_split:
+    grok: 0.90
+    openai: 0.10
+
+roles:
+  worker:
+    default: grok/grok-4.3
+    roster:
+      - id: grok/grok-4.3
+        provider: xai
+        inspect_id: grok/grok-4.3
+        temperature: 0.2
+        reasoning_effort: none
+        notes: Low-cost collab worker. reasoning_effort=none.
+      - id: grok/grok-4.6
+        provider: xai
+        inspect_id: grok/grok-4.6
+        temperature: 0.2
+        reasoning_effort: low
+        notes: Study C worker. grok-4.6 rejects reasoning_effort=none; use low.
+  orchestrator:
+    default: grok/grok-4.6
+    roster:
+      - id: grok/grok-4.6
+        provider: xai
+        inspect_id: grok/grok-4.6
+        temperature: 0.0
+        reasoning_effort: low
+        notes: Study A router. grok-4.6 rejects reasoning_effort=none; use low.
+  monitor:
+    default: openai/gpt-5.6-luna
+    roster:
+      - id: openai/gpt-5.6-luna
+        provider: openai
+        inspect_id: openai/gpt-5.6-luna
+        temperature: 0.0
+        strength: weak
+        notes: Cheap/weaker overseer. Primary English calibration target.
+      - id: grok/grok-4.3
+        provider: xai
+        inspect_id: grok/grok-4.3
+        temperature: 0.0
+        strength: mid
+        notes: Second monitor strength. Never pair with grok-4.3 workers.
+
+deferred:
+  - id: qwen
+    reason: Access not yet granted. Add as open-weight worker for the reproducibility arm.
