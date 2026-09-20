@@ -209,7 +209,38 @@ def study_b_capability() -> dict[str, Any]:
             sub = [r for r in rows if r["exec_language"] == code]
             c_ = sum(1 for r in sub if r["outcome"]["success"])
             raw_p[code] = float(fisher_exact([[a, b], [c_, len(sub) - c_]])[1])
-    return {"cells": cells, "joint_en_vs_L": {"raw_p": raw_p, "holm_p": holm(raw_p)}}
+    return {
+        "cells": cells,
+        "joint_en_vs_L": {"raw_p": raw_p, "holm_p": holm(raw_p)},
+        "joint_vs_solo_paired": mcnemar_joint_vs_solo(rows),
+    }
+
+
+def mcnemar_joint_vs_solo(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Exact McNemar test on joint vs solo success. The two arms share the same episodes."""
+    from scipy.stats import binomtest
+
+    if not rows:
+        return {}
+    joint_only = sum(1 for r in rows if r["outcome"]["success"] and not r["outcome"].get("solo_success"))
+    solo_only = sum(1 for r in rows if not r["outcome"]["success"] and r["outcome"].get("solo_success"))
+    both = sum(1 for r in rows if r["outcome"]["success"] and r["outcome"].get("solo_success"))
+    neither = len(rows) - joint_only - solo_only - both
+    discordant = joint_only + solo_only
+    p = float(binomtest(joint_only, discordant, 0.5).pvalue) if discordant else float("nan")
+    n = len(rows)
+    return {
+        "n": n,
+        "both": both,
+        "joint_only": joint_only,
+        "solo_only": solo_only,
+        "neither": neither,
+        "discordant": discordant,
+        "pooled_joint": sum(1 for r in rows if r["outcome"]["success"]) / n,
+        "pooled_solo": sum(1 for r in rows if r["outcome"].get("solo_success")) / n,
+        "exact_p": p,
+        "test": "exact McNemar (binomial on discordant pairs), paired within episode",
+    }
 
 
 # --------------------------------------------------------------------------- Study D
@@ -346,8 +377,13 @@ def study_d_selection() -> dict[str, Any]:
         "trial_1_choice": choices[0],
         "first_5": {c: choices[:5].count(c) for c in LANGS},
         "first_10": {c: choices[:10].count(c) for c in LANGS},
+        "en_share_ladder": {str(k): wilson(choices[:k].count("en"), k) for k in (5, 10, 20, 50)},
         "first_20_en_share": wilson(choices[:20].count("en"), 20),
         "last_50_en_share": wilson(choices[-50:].count("en"), 50),
+        "note": (
+            "only trial 1 is genuinely pre-feedback; every later window already "
+            "contains flag outcomes, so none of these estimates the language prior"
+        ),
     }
 
     mh_strata = []
