@@ -1,0 +1,53 @@
+[project]
+name = "cross-lingual-a2a"
+version = "0.1.0"
+description = "Benchmark: natural language as an oversight surface in A2A multi-agent systems"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "a2a-sdk[http-server]>=0.3.0",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.4",
+    "starlette>=0.38",
+    "uvicorn>=0.30",
+    "python-dotenv>=1.0",
+    "openai>=1.40",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2", "pytest-asyncio>=0.23"]
+eval = ["inspect-ai>=0.3"]
+
+[project.scripts]
+cx-hello = "harness.runner:hello_main"
+cx-metrics = "analysis.metrics:main"
+cx-calibrate = "harness.calibrate:main"
+cx-collab = "harness.collab:main"
+cx-study-c = "harness.study_c:main"
+cx-study-a = "harness.study_a:main"
+cx-study-b = "harness.study_b:main"
+cx-study-d = "harness.study_d:main"
+cx-study-e = "harness.study_e:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["agents*", "envs*", "harness*", "analysis*", "translation*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+asyncio_mode = "auto"
+markers = [
+    "integration: live local A2A servers",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
