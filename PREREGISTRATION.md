@@ -1,6 +1,12 @@
-# Pre-registration
+# Study plan
 
-Timestamped with the first commit of this file. Do not change primary comparisons after final data collection.
+**Provenance.** This plan was written before data collection, but it is not a timestamped
+pre-registration. The repository was created after the runs, so the first commit of this file
+postdates the data it governs, and there is no external record that fixes its contents in
+advance. Treat it as a declaration of intent that the paper is held to, not as independent
+evidence of when it was written. The paper's Section 5.4 lists every departure from it.
+
+Do not change primary comparisons after final data collection.
 
 ## Primary comparison
 

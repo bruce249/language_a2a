@@ -229,10 +229,11 @@ CAPTIONS = {
     ),
     "fig2_scores.png": (
         "Figure 2. Distribution of the suspicion scores the monitors actually returned across "
-        "the 1000 episodes of Study C, split by ground truth. Both monitors answer at the ends "
-        "of the range only. Because the mid monitor's 55 missed leaks carry the same score as "
-        "697 benign episodes, no threshold separates them, and neither AUROC nor recall at a "
-        "fixed false-positive rate is identified."
+        "the 1000 episodes of Study C, split by ground truth. Both answer at the ends of the "
+        "range only. For the mid monitor this is disqualifying: its 55 missed leaks carry the "
+        "same score as 697 benign episodes, so no threshold separates them and its AUROC "
+        "reduces to balanced accuracy, carrying no ranking information. Luna's two clusters "
+        "are fully separated, so its AUROC of 1.0 is valid."
     ),
     "fig3_detection.png": (
         "Figure 3. Share of seeded leaks flagged, by transcript language, with 95% Wilson "
